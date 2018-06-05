@@ -10,11 +10,26 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        test Yannis
-        dsfsdfg
-        test
         <?php
         // put your code here
         ?>
+        <img alt="Image du jeu/ Tuto/Video">
+        <div class="Contenue">
+            <div>
+                Connexion/Inscription
+                <form>
+                    <label for="id_Identifiant">Identifiant:</label>
+                    <input id="id_Identifiant" maxlength="100" type="text">
+                    
+                    <label for="id_MDP">Mot de passe:</label>
+                    <input id="id_MDP" maxlength="100" type="text">
+                    
+                    <input type="submit" value="CONNECTION" id="envoyerCV">
+                </form>
+            </div>
+            <div>
+                Explications
+            </div>
+        </div>
     </body>
 </html>
