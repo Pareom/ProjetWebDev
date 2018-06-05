@@ -12,6 +12,7 @@ and open the template in the editor.
     <body>
         test Yannis
         dsfsdfg
+        test
         <?php
         // put your code here
         ?>
