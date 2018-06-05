@@ -7,6 +7,7 @@
         <?php
         // put your code here
         ?>
-        mdfldskfj
+        <div id="avatar">
+            <img
+        </div>
     </body>
-</html>
