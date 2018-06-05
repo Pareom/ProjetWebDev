@@ -7,6 +7,8 @@
         <?php
         // put your code here
         ?>
-        test Camillepojk
+        <div id="avatar">
+            <img
+        </div>
     </body>
 </html>
