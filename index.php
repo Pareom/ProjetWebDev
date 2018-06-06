@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>ùmomlsdfkdsf</title>
     </head>
     <body>
         <?php
@@ -18,7 +18,7 @@ and open the template in the editor.
             <div>
                 Connexion/Inscription
                 <form>
-                    <label for="id_Identifiant">Identifiant:</label>
+                    <label for="id_Identifiant">Identificùokqsdokant:</label>
                     <input id="id_Identifiant" maxlength="100" type="text">
                     
                     <label for="id_MDP">Mot de passe:</label>
