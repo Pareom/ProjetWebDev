@@ -53,3 +53,25 @@ Pour changer les petites spécificiés
     background-color: rgba(150,150,150,0.8);
     border-radius: 10px;
 }
+
+
+
+/*----------------------------Compte-----------------------------------*/
+
+#avatar{
+    padding: 2%;
+}
+#head{
+    align-items: center;
+}
+#jouer{
+    margin-left: 40%;
+    margin-bottom: 5%;
+    width:20%;
+}
+#trier #mon_classement{
+    float: right;
+}
+#body_compte{
+    background-image: url("img/pois.bmp");
+}
