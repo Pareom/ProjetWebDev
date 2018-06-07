@@ -18,7 +18,7 @@ and open the template in the editor.
             <div>
                 Connexion/Inscription
                 <form>
-                    <label for="id_Identifiant">Identificùokqsdokant:</label>
+                    <label for="id_Identifiant">Identification:</label>
                     <input id="id_Identifiant" maxlength="100" type="text">
                     
                     <label for="id_MDP">Mot de passe:</label>
