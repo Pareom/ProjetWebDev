@@ -61,17 +61,26 @@ Pour changer les petites spécificiés
 #avatar{
     padding: 2%;
 }
-#head{
+#info{
     align-items: center;
+    text-align: center;
+}
+#head{
+    border-radius: 10px;
 }
 #jouer{
     margin-left: 40%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     width:20%;
 }
-#trier #mon_classement{
+#trier, #mon_classement{
     float: right;
 }
-#body_compte{
+#pagination_perso, #paginaton_general{
+    position: relative;
+    left:45%;
+}
+#scores{
     background-image: url("img/pois.jpg");
+    padding-top: 3%;
 }
