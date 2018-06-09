@@ -20,10 +20,10 @@ and open the template in the editor.
                 
                 <label for="inputIdentifiant" class="sr-only">Mail ou Identifiant</label>
                 <input type="id" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
-                
+                <div>
                 <label for="inputMail" class="sr-only">Adresse Mail</label>
                 <input type="email" id="inputEmail" class="form-control" placeholder="Adresse Mail" required autofocus>
-                
+                </div>
                 <label for="inputPassword" class="sr-only">Mot de passe</label>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
                 
@@ -32,7 +32,7 @@ and open the template in the editor.
                         <input type="checkbox" value="remember-me"> Rester connecté.
                     </label>
                 </div>
-                <p>Pas encore de compte?<a href="#">S'inscrire.</a></p>
+                <p class="Switch_Inscription">Pas encore de compte?<a href="#" onclick="">S'inscrire.</a></p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
         </div>
