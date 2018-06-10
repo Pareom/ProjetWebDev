@@ -16,9 +16,9 @@ and open the template in the editor.
     <body class="bg-img text-center">
         <div class="zone_co">
             <form class="form-signin">
-                <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+                <h1 class="h3 mb-3 font-weight-normal" id="titre">Connexion</h1>
                 
-                <label for="inputIdentifiant" class="sr-only">Mail ou Identifiant</label>
+                <label for="inputIdentifiant" class="sr-only">Identifiant</label>
                 <input type="id" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
                 <div>
                 <label for="inputMail" class="sr-only">Adresse Mail</label>
@@ -32,7 +32,7 @@ and open the template in the editor.
                         <input type="checkbox" value="remember-me"> Rester connecté.
                     </label>
                 </div>
-                <p class="Switch_Inscription">Pas encore de compte?<a href="#" onclick="">S'inscrire.</a></p>
+                <p id="Switch">Déjà inscrit?<a href="#" onclick="Switch_Connection()">Se connecter</a></p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
         </div>
