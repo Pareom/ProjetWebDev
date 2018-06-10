@@ -55,7 +55,9 @@ Pour changer les petites spécificiés
     background-color: rgba(150,150,150,0.8);
     border-radius: 10px;
 }
-
+#inputEmail{
+    display: none;
+}
 
 /*----------------------------Compte-----------------------------------*/
 

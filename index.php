@@ -14,18 +14,34 @@ and open the template in the editor.
         <title>Acceuil</title>
     </head>
     <body class="bg-img text-center">
+        <?php
+            $identifiant = $email = $motdepasse = "";
+
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+              $identifiant = test_input($_POST["inputIdentifiant"]);
+              $email = test_input($_POST["inputEmail"]);
+              $motdepasse = test_input($_POST["inputPassword"]);
+            }
+
+            function test_input($data) {
+              $data = trim($data);
+              $data = stripslashes($data);
+              $data = htmlspecialchars($data);
+              return $data;
+            }
+        ?>
         <div class="zone_co">
-            <form class="form-signin" onsubmit="return compte.php">
+            <form class="form-signin" onsubmit="return true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <h1 class="h3 mb-3 font-weight-normal" id="titre">Connexion</h1>
                 
                 <label for="inputIdentifiant" class="sr-only">Identifiant</label>
-                <input type="id" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
+                <input type="id" name="inputIdentifiant" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
                 <div>
                 <label for="inputMail" class="sr-only">Adresse Mail</label>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Adresse Mail" required autofocus>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Adresse Mail">
                 </div>
                 <label for="inputPassword" class="sr-only">Mot de passe</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
                 
                 <div class="checkbox mb-3">
                     <label>
@@ -35,6 +51,11 @@ and open the template in the editor.
                 <p id="Switch">Déjà inscrit?<a href="#" onclick="Switch_Connection()">Se connecter</a></p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
+            <?php
+                echo $identifiant;
+                echo $email;
+                echo $motdepasse;
+            ?>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
