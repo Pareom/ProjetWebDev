@@ -15,7 +15,7 @@ and open the template in the editor.
     </head>
     <body class="bg-img text-center">
         <div class="zone_co">
-            <form class="form-signin">
+            <form class="form-signin" onsubmit="return compte.php">
                 <h1 class="h3 mb-3 font-weight-normal" id="titre">Connexion</h1>
                 
                 <label for="inputIdentifiant" class="sr-only">Identifiant</label>
