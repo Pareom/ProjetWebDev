@@ -10,7 +10,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+        <link rel="stylesheet" href="style.css" type="text/css" >
         <title>Acceuil</title>
     </head>
     <body class="bg-img text-center">
@@ -32,7 +32,7 @@ and open the template in the editor.
         ?>
         <div class="zone_co">
             <form class="form-signin" onsubmit="return true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                <h1 class="h3 mb-3 font-weight-normal" id="titre">Connexion</h1>
+                <h1 class="h3 mb-3 font-weight-normal" id="titre">Connection</h1>
                 
                 <label for="inputIdentifiant" class="sr-only">Identifiant</label>
                 <input type="id" name="inputIdentifiant" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
@@ -48,7 +48,7 @@ and open the template in the editor.
                         <input type="checkbox" value="remember-me"> Rester connecté.
                     </label>
                 </div>
-                <p id="Switch">Déjà inscrit?<a href="#" onclick="Switch_Connection()">Se connecter</a></p>
+                <p id="Switch">Pas encore de compte?<a href="#" onclick="Switch_Inscription()">S'inscrire.</a></p>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
             <?php

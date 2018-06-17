@@ -2,10 +2,10 @@ function Switch_Connection(){
     console.log("passage en mode connection");
     $("#titre").html("Connection");
     $("#inputEmail").attr("style", "display:none;");
-    $("#inputIdentifiant").attr("placeholder", "EMail ou Identifiant");
+    $("#inputIdentifiant").attr("placeholder", "Mail ou Identifiant");
     $(".checkbox").attr("style", "display:block;");
     $("#Switch").html("Pas encore de compte?<a href='#' onclick='Switch_Inscription()'>S'inscrire.</a>");
-    $(".btn").html("Connection");
+    $(".btn").html("Se connecter");
 }
 
 function Switch_Inscription(){
@@ -15,5 +15,5 @@ function Switch_Inscription(){
     $("#inputIdentifiant").attr("placeholder", "Identifiant");
     $(".checkbox").attr("style", "display:none;");
     $("#Switch").html("Déjà inscrit?<a href='#' onclick='Switch_Connection()'>Se connecter</a>");
-    $(".btn").html("Inscription");
+    $(".btn").html("S'inscrire");
 }
