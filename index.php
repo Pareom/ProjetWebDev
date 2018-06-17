@@ -15,6 +15,11 @@ and open the template in the editor.
     </head>
     <body class="bg-img text-center">
         <?php
+            function chargerClasse($classe) {
+                require $classe . '.php'; // On inclut la classe correspondante au paramètre passé.
+            }
+
+            spl_autoload_register('chargerClasse');
             $identifiant = $email = $motdepasse = "";
 
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,7 +27,27 @@ and open the template in the editor.
               $email = test_input($_POST["inputEmail"]);
               $motdepasse = test_input($_POST["inputPassword"]);
             }
-
+            if($identifiant!="" and $motdepasse!=""){
+                $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
+                if($email!=""){
+                    $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant'");
+                    $donnees = $request->fetch(PDO::FETCH_ASSOC);
+                    if($donnees['count(*)']!=0){
+                        echo "Probleme, il existe deja un compte comme ca ";
+                    }else{
+                        $DB->exec("INSERT INTO compte(id, mdp, mail, logo) VALUES('$identifiant','$motdepasse','$email','')");
+                    }
+                }else{
+                    $request = $DB->query("SELECT id,count(*) FROM compte WHERE mdp='$motdepasse' and (id='$identifiant' or mail='$identifiant')");
+                    $donnees = $request->fetch(PDO::FETCH_ASSOC);
+                    if($donnees['count(*)']!=0){
+                        echo "Parait, on s'est connecté ";
+                        echo $donnees['id'];
+                    }else{
+                        echo "Ah, ca n'a pas marché";
+                    }
+                }
+            }
             function test_input($data) {
               $data = trim($data);
               $data = stripslashes($data);
@@ -52,6 +77,9 @@ and open the template in the editor.
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
             <?php
+                if($identifiant==""){
+                    echo "ah...";
+                }
                 echo $identifiant;
                 echo $email;
                 echo $motdepasse;
