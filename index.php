@@ -1,4 +1,21 @@
-
+<?php
+    session_start();
+    $_SESSION['id']="";
+    
+    if(isset($_COOKIE['id'])){
+        if($_COOKIE['id']!=''){
+            $_SESSION['id']=$_COOKIE['id'];
+        }
+    }else{
+        setcookie('id', '', time() + 1, null, null, false, true);
+    }
+    if(isset($_SESSION['id'])){
+        if($_SESSION['id']!=""){
+            header('Location: http://localhost/ProjetWebDev/compte.php');
+            exit();
+        }
+    }
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -29,7 +46,7 @@ and open the template in the editor.
                 
                 <div class="checkbox mb-3">
                     <label>
-                        <input type="checkbox" value="remember-me"> Rester connecté.
+                        <input type="checkbox" name="remember_me"> Rester connecté.
                     </label>
                 </div>
                 <div class="alert alert-warning" id="alert_index">
@@ -44,6 +61,8 @@ and open the template in the editor.
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="js/index.js"></script>
         <?php
+            echo $_COOKIE['id']," oihjl";
+            echo "session: ",$_SESSION['id'];
             function chargerClasse($classe) {
                 require $classe . '.php'; // On inclut la classe correspondante au paramètre passé.
             }
@@ -56,23 +75,29 @@ and open the template in the editor.
               $email = test_input($_POST["inputEmail"]);
               $motdepasse = test_input($_POST["inputPassword"]);
             }
+            
             if($identifiant!="" and $motdepasse!=""){
                 $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
                 if($email!=""){
                     $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant'");
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
                     if($donnees['count(*)']!=0){
-                        echo "Probleme, il existe deja un compte comme ca ";
+                        //echo "Probleme, il existe deja un compte comme ca ";
                         ?><script type="text/javascript">ProblemeInscription();</script><?php
                     }else{
                         $DB->exec("INSERT INTO compte(id, mdp, mail, logo) VALUES('$identifiant','$motdepasse','$email','')");
+                        ?><script type="text/javascript">Switch_Connection();</script><?php //On l'envoie se connecter
                     }
                 }else{
                     $request = $DB->query("SELECT id,count(*) FROM compte WHERE mdp='$motdepasse' and (id='$identifiant' or mail='$identifiant')");
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
                     if($donnees['count(*)']!=0){
-                        echo "Parait, on s'est connecté ";
-                        echo $donnees['id'];
+                        $_SESSION['id']=$donnees['id'];//On s'est bien co
+                        if (isset($_POST["remember_me"])){
+                            setcookie('id', $donnees['id'], time() + 1*60*60, null, null, false, true);
+                        }
+                        $_SESSION['id']="";
+                        header('Location: http://localhost/ProjetWebDev/compte.php');
                     }else{
                         echo "Ah, ca n'a pas marché";
                         ?><script type="text/javascript">ProblemeConnection();</script><?php
