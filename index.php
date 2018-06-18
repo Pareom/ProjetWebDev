@@ -14,6 +14,35 @@ and open the template in the editor.
         <title>Acceuil</title>
     </head>
     <body class="bg-img text-center">
+        <div class="zone_co">
+            <form class="form-signin" onsubmit="return true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                <h1 class="h3 mb-3 font-weight-normal" id="titre">Connection</h1>
+                
+                <label for="inputIdentifiant" class="sr-only">Identifiant</label>
+                <input type="id" name="inputIdentifiant" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
+                <div>
+                <label for="inputMail" class="sr-only">Adresse Mail</label>
+                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Adresse Mail">
+                </div>
+                <label for="inputPassword" class="sr-only">Mot de passe</label>
+                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
+                
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Rester connecté.
+                    </label>
+                </div>
+                <div class="alert alert-warning">
+                    <strong>Erreur!</strong> Code: 0xc0000012, Donnez ce code à microsoft si il font leur taff...
+                </div>
+                <p id="Switch">Pas encore de compte?<a href="#" onclick="Switch_Inscription()">S'inscrire.</a></p>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="js/index.js"></script>
         <?php
             function chargerClasse($classe) {
                 require $classe . '.php'; // On inclut la classe correspondante au paramètre passé.
@@ -34,6 +63,7 @@ and open the template in the editor.
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
                     if($donnees['count(*)']!=0){
                         echo "Probleme, il existe deja un compte comme ca ";
+                        ?><script type="text/javascript">ProblemeInscription();</script><?php
                     }else{
                         $DB->exec("INSERT INTO compte(id, mdp, mail, logo) VALUES('$identifiant','$motdepasse','$email','')");
                     }
@@ -45,6 +75,7 @@ and open the template in the editor.
                         echo $donnees['id'];
                     }else{
                         echo "Ah, ca n'a pas marché";
+                        ?><script type="text/javascript">ProblemeConnection();</script><?php
                     }
                 }
             }
@@ -55,39 +86,5 @@ and open the template in the editor.
               return $data;
             }
         ?>
-        <div class="zone_co">
-            <form class="form-signin" onsubmit="return true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                <h1 class="h3 mb-3 font-weight-normal" id="titre">Connection</h1>
-                
-                <label for="inputIdentifiant" class="sr-only">Identifiant</label>
-                <input type="id" name="inputIdentifiant" id="inputIdentifiant" class="form-control" placeholder="Mail ou Identifiant" required autofocus>
-                <div>
-                <label for="inputMail" class="sr-only">Adresse Mail</label>
-                <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Adresse Mail">
-                </div>
-                <label for="inputPassword" class="sr-only">Mot de passe</label>
-                <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-                
-                <div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Rester connecté.
-                    </label>
-                </div>
-                <p id="Switch">Pas encore de compte?<a href="#" onclick="Switch_Inscription()">S'inscrire.</a></p>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
-            </form>
-            <?php
-                if($identifiant==""){
-                    echo "ah...";
-                }
-                echo $identifiant;
-                echo $email;
-                echo $motdepasse;
-            ?>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-        <script src="js/index.js"></script>
     </body>
 </html>

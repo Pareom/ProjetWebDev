@@ -58,7 +58,9 @@ Pour changer les petites spécificiés
 #inputEmail{
     display: none;
 }
-
+.alert{
+    display: none;
+}
 /*----------------------------Compte-----------------------------------*/
 
 #avatar{
