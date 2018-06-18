@@ -32,7 +32,7 @@ and open the template in the editor.
                         <input type="checkbox" value="remember-me"> Rester connecté.
                     </label>
                 </div>
-                <div class="alert alert-warning">
+                <div class="alert alert-warning" id="alert_index">
                     <strong>Erreur!</strong> Code: 0xc0000012, Donnez ce code à microsoft si il font leur taff...
                 </div>
                 <p id="Switch">Pas encore de compte?<a href="#" onclick="Switch_Inscription()">S'inscrire.</a></p>
