@@ -61,8 +61,6 @@ and open the template in the editor.
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="js/index.js"></script>
         <?php
-            echo $_COOKIE['id']," oihjl";
-            echo "session: ",$_SESSION['id'];
             function chargerClasse($classe) {
                 require $classe . '.php'; // On inclut la classe correspondante au paramètre passé.
             }
