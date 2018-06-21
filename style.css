@@ -5,6 +5,8 @@ Pour changer les petites spécificiés
     Created on : 6 juin 2018, 19:14:41
     Author     : yannis.bourree
 */
+
+/*----------------------------Accueil-----------------------------------*/
 .bg-img {
   background: url(img/fond_temporaire.jpg) no-repeat center fixed; 
   -webkit-background-size: cover; /* pour anciens Chrome et Safari */
@@ -48,14 +50,18 @@ Pour changer les petites spécificiés
 .zone_co{
     margin-top: 10%;
     width: 50%;
+    max-width: 360px;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(150,150,150,0.8);
     border-radius: 10px;
 }
-
-
-
+#inputEmail{
+    display: none;
+}
+#alert_index{
+    display: none;
+}
 /*----------------------------Compte-----------------------------------*/
 
 #avatar{

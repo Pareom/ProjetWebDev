@@ -1,3 +1,10 @@
+<?php
+    session_start();        
+    /* ca sert à la deconnexion, il faut faire un bouton qui fasse ca 
+    $_SESSION['id']=""; 
+    setcookie('id', '', time() + 1, null, null, false, true);
+     */
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -8,7 +15,7 @@
     <body id="body_compte">
         <div class="container-fluid">
         <?php
-        // put your code here
+            // put your code here
         ?>
         <div id="head">
             <div id="info" class="row">
