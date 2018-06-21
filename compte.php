@@ -10,20 +10,23 @@
         <?php
         // put your code here
         ?>
-        <div id="head" class="row">
-            <img src="img/avatar_test.png" class="rounded-circle col-sm-3 img-fluid" id="avatar" alt="Avatar">
-            <h1 class="col-sm-7 align-item-center" id="pseudo">Pseudo</h1>
-            <h3 class="col-sm-2" id="classement_joueur">Classement : </h3>
-        </div>
+        <div id="head">
+            <div id="info" class="row">
+                <img src="img/avatar_test.png" class="rounded-circle col-sm-3 img-fluid" id="avatar" alt="Avatar">
+                <h1 class="col-sm-6 align-item-center" id="pseudo">Pseudo</h1>
+                <h3 class="col-sm-3" id="classement_joueur">Classement : </h3>
+            </div>
         <button type="button" id="jouer" class="btn btn-warning btn-primary btn-lg">Jouer</button>
+        </div>
         <div id="scores" class="row">
             <div class="col">
                 <table id="classement_general" class="table table-dark table-striped">
                     <thead>
                         <tr>    
-                            <th>Classement général</th>
-                            <th></th>
-                            <th><button type="button" id="mon_classement" class="btn btn-secondary btn-sm">Mon classement</button></th>
+                            <th colspan="3">
+                                Classement général
+                                <button type="button" id="mon_classement" class="btn btn-secondary btn-sm">Mon classement</button>
+                            </th>
                         </tr>
                         <tr>
                                 <th>#</th>
@@ -84,23 +87,21 @@
                         </tr>
                     </tbody>
                     <tfoot>
-                        <th></th>
-                        <th class="col-md3">
-                            <ul class="pagination">
+                        <th colspan="3">
+                            <ul class="pagination" id="paginaton_general">
                                 <li class="page-item"><a class="page-link" href="#"><</a></li>
                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#">></a></li>
                             </ul>
                         </th>
-                        <th></th>
                     </tfoot>
                 </table>
             </div>
             <div class="col">
                 <table id="classement_perso" class="table table-dark table-striped">
                     <thead>
-                    <th>Scores personnels</th>
-                    <th>
+                    <th colspan="2">
+                        Scores personnels
                         <select id="trier" class="btn btn-secondary btn-sm">
                             <option>trier par scores</option>
                             <option>trier par dates</option>
@@ -154,15 +155,13 @@
                         </tr>  
                     </tbody>
                     <tfoot>
-                    <th></th>
-                    <th class="col-md3">
-                        <ul class="pagination">
+                    <th colspan="2">
+                        <ul class="pagination" id="pagination_perso">
                             <li class="page-item"><a class="page-link" href="#"><</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">></a></li>
                         </ul>
                     </th>
-                    <th></th>
                     </tfoot>
                 </table>
             </div>
