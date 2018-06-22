@@ -242,8 +242,7 @@ function launchGame()
         alert("Veuillez choisir un jeu");
     }
 }
-function deconnexion()
+function setAvatar()
 {
-    $_SESSION['id']=""; 
-    setcookie('id', '', time() + 1, null, null, false, true);
+    
 }

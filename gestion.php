@@ -35,11 +35,6 @@
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
         $DB->exec("UPDATE compte SET mdp=$motdepasse WHERE id=$identifiant");
     }
-    if(!$logo="")
-    {
-        $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-        $DB->exec("UPDATE compte SET logo=$logo WHERE id=$identifiant");
-    } 
 ?>
     
     
@@ -61,7 +56,7 @@
             </div>
         </nav>
        <div id="zone_modif" class="col-sm-3">
-        <form action=" method="post" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form action="upload.php" method="post" enctype="multipart/form-data"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h4>Changer d'avatar</h4>
             <label for="newAvatar" class="sr-only">Changer d'avatar :</label>
             <input name="newAvatar" type="file" class="form-control-file border">
