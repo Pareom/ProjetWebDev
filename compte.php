@@ -29,7 +29,6 @@
                       <a class="dropdown-item" href="gestion.php">Gestion du compte</a>
                     </div>
                     </li>
-                    <a class="navbar-brand" href="#" id="classement_joueur">Classement : </a>
                 </div>
             </nav>
         <!---En-tête--->

@@ -25,8 +25,18 @@
     if(!$email="")
     {
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-        $DB->exec("UPDATE compte SET ");
-    }        
+        $DB->exec("UPDATE compte SET mail=$email WHERE id=$identifiant");
+    }
+    if(!$motdepasse="")
+    {
+        $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
+        $DB->exec("UPDATE compte SET mdp=$motdepasse WHERE id=$identifiant");
+    }
+    if(!$logo="")
+    {
+        $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
+        $DB->exec("UPDATE compte SET logo=$logo WHERE id=$identifiant");
+    } 
 ?>
     
     
