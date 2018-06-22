@@ -1,9 +1,19 @@
-<?php
-    session_start();        
-    /* ca sert à la deconnexion, il faut faire un bouton qui fasse ca 
-    $_SESSION['id']=""; 
-    setcookie('id', '', time() + 1, null, null, false, true);
-     */
+<?php        
+    session_start();
+    if(isset($_COOKIE['id'])){
+        if($_COOKIE['id']!=''){
+            $_SESSION['id']=$_COOKIE['id'];
+        }
+    }
+    if(isset($_SESSION['id'])){
+        if($_SESSION['id']!=''){
+            $identifiant=$_COOKIE['id'];
+        }
+    }
+    else{
+            header('Location: http://localhost/ProjetWebDev/compte.php');
+            exit();
+    }
 ?>
 <html>
     <head>

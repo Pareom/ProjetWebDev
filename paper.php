@@ -1,3 +1,20 @@
+<?php
+    session_start();
+    if(isset($_COOKIE['id'])){
+        if($_COOKIE['id']!=''){
+            $_SESSION['id']=$_COOKIE['id'];
+        }
+    }
+    if(isset($_SESSION['id'])){
+        if($_SESSION['id']!=''){
+            $identifiant=$_COOKIE['id'];
+        }
+    }
+    else{
+            header('Location: http://localhost/ProjetWebDev/compte.php');
+            exit();
+    }
+    ?>
 <html>
     <head>
         <meta charset="UTF-8">

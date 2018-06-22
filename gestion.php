@@ -7,13 +7,13 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=''){
-            $identifiant['id']=$_COOKIE['id'];
+            $identifiant=$_COOKIE['id'];
         }
     }
     else{
             header('Location: http://localhost/ProjetWebDev/compte.php');
             exit();
-        }
+    }
     $logo = $email = $logo = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
