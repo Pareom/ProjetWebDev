@@ -32,20 +32,26 @@
     
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $logo = test_input($_POST["newAvatar"]);
-      $email = test_input($_POST["newMail"]);
-      $motdepasse = test_input($_POST["newPassword"]);
+      $logo = isset($_POST["newAvatar"])?test_input($_POST["newAvatar"]):"";
+      $email = isset($_POST["newMail"])?test_input($_POST["newMail"]):"";
+      $motdepasse = isset($_POST["newPassword"])?test_input($_POST["newPassword"]):"";
     }
     
-    if(!$email="")
+    if($email!="")
     {
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
         $DB->exec("UPDATE compte SET mail='$email' WHERE id='$identifiant'");
     }
-    if(!$motdepasse="")
+    if($motdepasse!="")
     {
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
         $DB->exec("UPDATE compte SET mdp='$motdepasse' WHERE id='$identifiant'");
+    }
+    function test_input($data) {
+              $data = trim($data);
+              $data = stripslashes($data);
+              $data = htmlspecialchars($data);
+              return $data;
     }
 ?>
     
@@ -60,27 +66,25 @@
     <body class="bg-img text-center">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="navbar-nav">
-                <img src="<?php echo $identifiant; ?>" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                <img src="<?php echo $img; ?>" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
                 <a class="navbar-brand" href="#" id="pseudo"><?php echo $identifiant; ?></a>
                 <a class="navbar-brand" href="compte.php" id='retour'>Retour</a>
-                
-                
             </div>
         </nav>
        <div id="zone_modif" class="col-sm-3">
         <form action="upload.php" method="post" enctype="multipart/form-data"<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h4>Changer d'avatar</h4>
             <label for="newAvatar" class="sr-only">Changer d'avatar :</label>
-            <input name="newAvatar" type="file" class="form-control-file border">
+            <input name="newAvatar" id='newAvatar' type="file" class="form-control-file border">
             <button class="btn btn-lg btn-primary btn-block" type="submit" id='changeAvatar'>Valider</button>
         </form>
-           <form>
+           <form method="post" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h4>Changer d'email</h4>
             <label for="newMail" class="sr-only">Changer d'addresse mail :</label>
-            <input name="newMail" type="email" class="form-control border">
+            <input name="newMail" id='newMail' type="email" class="form-control border">
             <button class="btn btn-lg btn-primary btn-block" type="submit" id='changeMail'>Valider</button>
             </form>
-           <form>
+           <form method="post" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <h4>Changer de mot de passe</h4>   
             <label for="newPassword" class="sr-only">Changer de mot de passe :</label>
             <input name="newPassword" type="password" class="form-control border">
