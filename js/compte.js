@@ -56,7 +56,7 @@ function changeAgar(){
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Agar.io";
     image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agarTete.png')";;
+    head.style.backgroundImage = "url('img/agarTete.jpg')";;
 }
 function changePaper(){
     var jeu = document.getElementById("choixJeu");
@@ -64,37 +64,37 @@ function changePaper(){
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Paper.io";
     image.style.backgroundImage = "url('img/paperFond.png')";
-    head.style.backgroundImage = "url('img/agar.png')";;
+    head.style.backgroundImage = "url('img/paper.png')";;
 }
 function changeSlither(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Slither.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agar.png')";;
+    image.style.backgroundImage = "url('img/slitherFond.png')";
+    head.style.backgroundImage = "url('img/slither.jpg')";;
 }
 function changeSplix(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Splix.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agar.png')";;
+    image.style.backgroundImage = "url('img/splixFond.jpg')";
+    head.style.backgroundImage = "url('img/splix.jpg')";;
 }
 function changeSuperhex(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à SuperHex.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agar.png')";;
+    image.style.backgroundImage = "url('img/superFond.png')";
+    head.style.backgroundImage = "url('img/superhex.jpg')";;
 }
 function changeOver(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
     jeu.innerHTML="Jouer à OverWatch.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agar.png')";;
+    image.style.backgroundImage = "url('img/overFond.jpg')";
+    head.style.backgroundImage = "url('img/over.jpeg')";;
 }
