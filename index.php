@@ -32,7 +32,7 @@ and open the template in the editor.
     </head>
     <body class="bg-img text-center">
         <div class="zone_co">
-            <form class="form-signin" onsubmit="return true" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <form class="form-signin" onsubmit="verifChamps()" method="post" name="form" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <h1 class="h3 mb-3 font-weight-normal" id="titre">Connection</h1>
                 
                 <label for="inputIdentifiant" class="sr-only">Identifiant</label>
@@ -43,7 +43,7 @@ and open the template in the editor.
                 </div>
                 <label for="inputPassword" class="sr-only">Mot de passe</label>
                 <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
-                
+                    
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" name="remember_me"> Rester connecté.
