@@ -17,17 +17,58 @@
         <?php
             // put your code here
         ?>
-        <div id="head">
-            <div id="info" class="row">
-                <img src="img/avatar_test.png" class="rounded-circle col-sm-3 img-fluid" id="avatar" alt="Avatar">
-                <h1 class="col-sm-6 align-item-center" id="pseudo">Pseudo</h1>
-                <h3 class="col-sm-3" id="classement_joueur">Classement : </h3>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="navbar-nav">
+                    <img src="img/avatar_test.png" alt="Logo" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                    <a class="navbar-brand" href="#" id="pseudo">Pseudo</a>
+                    
+                    <li class="nav-item dropdown" id="navButton">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Autres
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="index.php">Déconnexion</a>
+                      <a class="dropdown-item" href="gestion.php">Gestion du compte</a>
+                    </div>
+                    </li>
+                    <a class="navbar-brand" href="#" id="classement_joueur">Classement : </a>
+                </div>
+            </nav>
+        <!---En-tête--->
+        <div id="head" class="jumbotron">
+            
+            <div class="btn-group" id="jeux">
+                <button type="button" class="btn btn-primary">Jeu</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="game.php">Agar.io</a>
+                  <a class="dropdown-item" href="game.php">Paper.io</a>
+                  <a class="dropdown-item" href="game.php">Slither.io</a>
+                  <a class="dropdown-item" href="game.php">Superhex.io</a>
+                  <a class="dropdown-item" href="game.php">Splix.io</a>
+                  <a class="dropdown-item" href="game.php">Overwatch.io</a>
+                </div>
             </div>
-        <button type="button" id="jouer" class="btn btn-warning btn-primary btn-lg">Jouer</button>
         </div>
+            
+        <!---Modal jeu--->    
+        <div class="modal fade" id="modalJeu">
+            <div class="modal-header">
+                <h4 class="modal-title">Choisissez votre jeu !</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" href="game.php">Jouer !</button>
+            </div>
+            </div>
+        </div>
+        
+        <!---Scores--->
         <div id="scores" class="row">
             <div class="col">
-                <table id="classement_general" class="table table-dark table-striped">
+                <table id="classement_general" class="table table-dark table-striped" data-toggle="modal" data-target="modalJeu">
                     <thead>
                         <tr>    
                             <th colspan="3">
