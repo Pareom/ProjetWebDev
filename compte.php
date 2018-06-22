@@ -135,9 +135,9 @@
                     <tfoot>
                         <th colspan="3">
                             <ul class="pagination" id="pagination_general">
-                                <li class="page-item"><a class="page-link" href="#"><</a></li>
-                                <li class="page-item active"><a id="Page_general" class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">></a></li>
+                                <li class="page-item"><a style="color:#007bff;" class="page-link " onclick="moinsPageGeneral('<?php echo $identifiant ?>')"><</a></li>
+                                <li class="page-item active"><a id="Page_general" class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a style="color:#007bff;" class="page-link " onclick="plusPageGeneral('<?php echo $identifiant ?>')">></a></li>
                             </ul>
                         </th>
                     </tfoot>
@@ -199,9 +199,9 @@
                     <tfoot>
                     <th colspan="2">
                         <ul class="pagination" id="pagination_perso" name="1">
-                            <li class="page-item"><a class="page-link" onclick="moinsPagePerso('<?php echo $identifiant ?>')"><</a></li>
+                            <li class="page-item"><a style="color:#007bff;" class="page-link " onclick="moinsPagePerso('<?php echo $identifiant ?>')"><</a></li>
                             <li class="page-item active"><a id="Page_perso" class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" onclick="plusPagePerso('<?php echo $identifiant ?>')">></a></li>
+                            <li class="page-item"><a style="color:#007bff;" class="page-link " onclick="plusPagePerso('<?php echo $identifiant ?>')">></a></li>
                         </ul>
                     </th>
                     </tfoot>
