@@ -38,7 +38,7 @@
         <div id="head" class="jumbotron">
             
             <div class="btn-group" id="jeux">
-                <button name="choix" id="choixJeu" type="button" class="btn btn-primary">Choisissez votre jeu !</button>
+                <button name="choix" id="choixJeu" type="button" class="btn btn-primary" onclick="launchGame()">Choisissez votre jeu !</button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu">

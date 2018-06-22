@@ -56,11 +56,10 @@ function changeAgar(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à Agar.io";
     image.style.backgroundImage = "url('img/agar.png')";
     head.style.backgroundImage = "url('img/agarTete.jpg')";
-    $("#btn").attr("name", "agar");
+    $("#choixJeu").attr("name", "agar");
 }
 function changePaper(){
     hideAccueil();
@@ -68,11 +67,10 @@ function changePaper(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à Paper.io";
     image.style.backgroundImage = "url('img/paperFond.png')";
     head.style.backgroundImage = "url('img/paper.png')";
-    $("#btn").attr("name", "paper");
+    $("#choixJeu").attr("name", "paper");
 }
 function changeSlither(){
     hideAccueil();
@@ -80,11 +78,10 @@ function changeSlither(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à Slither.io";
     image.style.backgroundImage = "url('img/slitherFond.png')";
     head.style.backgroundImage = "url('img/slither.jpg')";
-    $("#btn").attr("name", "slither");
+    $("#choixJeu").attr("name", "slither");
 }
 function changeSplix(){
     hideAccueil();
@@ -92,11 +89,10 @@ function changeSplix(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à Splix.io";
     image.style.backgroundImage = "url('img/splixFond.jpg')";
     head.style.backgroundImage = "url('img/splix.jpg')";
-    $("#btn").attr("name", "splix");
+    $("#choixJeu").attr("name", "splix");
 }
 function changeSuperhex(){
     hideAccueil();
@@ -104,11 +100,10 @@ function changeSuperhex(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à SuperHex.io";
     image.style.backgroundImage = "url('img/superFond.png')";
     head.style.backgroundImage = "url('img/superhex.jpg')";
-    $("#btn").attr("name", "superhex");
+    $("#choixJeu").attr("name", "superhex");
 }
 function changeOver(){
     hideAccueil();
@@ -116,22 +111,19 @@ function changeOver(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
     var head = document.getElementById("head");
-    var btn = document.getElementById("choixJeu");
     jeu.innerHTML="Jouer à OverWatch.io";
     image.style.backgroundImage = "url('img/overFond.jpg')";
     head.style.backgroundImage = "url('img/over.jpeg')";
-    $("#btn").attr("name", "over");
+    $("#choixJeu").attr("name", "over");
 }
 function setTab()
 {
-    var scores = document.getElementById("scores");
     $(function(){
         $("#scores").show();
     });
 }
 function hideTab()
 {
-    var scores = document.getElementById("scores");
     $(function(){
         $("#scores").hide();
     });
@@ -139,8 +131,39 @@ function hideTab()
 hideTab();
 function hideAccueil()
 {
-    var accueil = document.getElementById("accueil");
     $(function(){
         $("#accueil").hide();
     });
+}
+function launchGame()
+{
+    var name = (document.getElementById("choixJeu")).name;
+    if(name==="agar")
+    {
+        document.location.href="agar.php";
+    }
+    else if(name==="paper")
+    {
+        document.location.href="paper.php";
+    }
+    else if(name==="slither")
+    {
+        document.location.href="slither.php";
+    }
+    else if(name==="splix")
+    {
+        document.location.href="splix.php";
+    }
+    else if(name==="superhex")
+    {
+        document.location.href="superhex.php";
+    }
+    else if(name==="over")
+    {
+        document.location.href="over.php";
+    }
+    else
+    {
+        alert("Veuillez choisir un jeu");
+    }
 }
