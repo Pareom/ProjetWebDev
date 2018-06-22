@@ -74,7 +74,7 @@ Pour changer les petites spécificiés
 #head{
     border-radius: 10px;
 }
-#jouer{
+#jeux{
     margin-left: 40%;
     margin-bottom: 2%;
     width:20%;
@@ -89,4 +89,7 @@ Pour changer les petites spécificiés
 #scores{
     background-image: url("img/pois.jpg");
     padding-top: 3%;
+}
+#classement_joueur{
+    margin-right: 5%;
 }
