@@ -29,3 +29,28 @@ function typeFormMail(mail)
     var reg = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
     return(reg.test(mail));
 }
+
+function verifChamps()
+{
+    var id = document.forms["form"]["inputIdentifiant"];
+    var mail = document.forms["form"]["inputEmail"];
+    var mdp = document.forms["form"]["inputPassword"];
+    if(!id.value)
+    {
+        id.style.border ="solid red";
+        return false;
+    } 
+    if(!mdp.value)
+    {
+        mdp.style.border ="solid red";
+        return false;
+    } 
+    if(mail.style.display==='block')
+    {
+        if(!mail.value || typeFormMail(mail))
+        {
+            mail.style.border ="solid red";
+            return false;
+        }
+    }  
+}

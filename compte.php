@@ -25,7 +25,7 @@
                       Autres
                     </a>
                     <div class="dropdown-menu">
-                      <a class="dropdown-item" href="index.php">Déconnexion</a>
+                        <a class="dropdown-item" href="index.php" onclick="deconnexion()">Déconnexion</a>
                       <a class="dropdown-item" href="gestion.php">Gestion du compte</a>
                     </div>
                     </li>
