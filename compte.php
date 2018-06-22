@@ -14,35 +14,7 @@
     </head>
     <body>
         <div class="container-fluid">
-        <?php
         
-            //header("Content-Type: text/xml");
-            
-            echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-            echo "<list>";
-
-
-            if (isset($_POST["Jeu"])) {?> <script>console.log("test")</script><?php
-                $jeu = htmlentities($_POST["Jeu"]);
-                recupTableauScoreGeneral($jeu);
-            }
-
-            echo "</list>";
-            
-            function recupTableauScoreGeneral($jeu){
-                mysql_connect("localhost", "root", "");
-                mysql_select_db("porjetwebdev");
-                $list ="";
-                $query = mysql_query("SELECT identifiant,score FROM (SELECT * FROM score WHERE jeu=" . mysql_real_escape_string($jeu) . " ORDER BY score DESC) GROUP BY identifiant");
-                
-                while ($back = mysql_fetch_assoc($query)) {
-                    $list+= "<item id=\"" . $back["id"] . "\" score=\"" . $back["name"] . "\" />";
-                }
-                return $list;
-            }
-         
-         
-        ?>
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="navbar-nav">
                     <img src="img/avatar_test.png" alt="Logo" style="width:40px; height: 40px" class="rounded-circle" id="avatar">

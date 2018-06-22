@@ -24,7 +24,7 @@ function requestGeneral() {
 	var xhr   = getXMLHttpRequest();
 	
 	xhr.onreadystatechange = function() {
-            console.log(xhr.readyState);
+            console.log(xhr.responseType);
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
 			readDataGeneral(xhr.responseXML, 1);
 			//document.getElementById("loader").style.display = "none";
@@ -32,10 +32,10 @@ function requestGeneral() {
 			//document.getElementById("loader").style.display = "inline";
 		}
 	};
-	
-	xhr.open("POST", "compte.php", true);
+	console.log(value);
+	xhr.open("POST", "AJAAX.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("jeu=" + "Agar.io");
+	xhr.send("jeu="+value);
 }
 
 function readDataGeneral(oData, page) {
@@ -44,49 +44,81 @@ function readDataGeneral(oData, page) {
 	var tableau = document.getElementById("TabGeneral");
 	var lignes,cases;
 	tableau.innerHTML = "";
-	for (var i=page-1 ; i<page+10;i++) {
+	for (var i=(page-1)*10 ; i<page*10;i++) {
             
                 lignes = document.createElement("tr");
-                cases = document.createElement("th");
-                if(i<nodes.length)
-                    cases.innerHTML = nodes[i].getAttribute("id");
-                else
-                    cases.innerHTML = "-";
+                id = document.createElement("th");
+                place = document.createElement("th");
+                score = document.createElement("th");
+                console.log("Longueur "+nodes.length)
+                if(i<nodes.length){
+                    id.innerHTML = nodes[i].getAttribute("id");
+                    place.innerHTML = i+1;
+                    score.innerHTML = nodes[i].getAttribute("score");
+                }
+                else{
+                    id.innerHTML = "-";
+                    place.innerHTML = i+1;
+                    score.innerHTML = "-";
+                }
                 tableau.appendChild(lignes);
-                tableau.appendChild(cases);
+                lignes.appendChild(place);
+                lignes.appendChild(id);
+                lignes.appendChild(score);
             
             
 	}
 }
 
-
-function readData(oData) {
-	var nodes   = oData.getElementsByTagName("item");
-	var oSelect = document.getElementById("softwaresSelect");
-	var oOption, oInner;
+function requestPersonnel() {
+	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
+	var xhr   = getXMLHttpRequest();
 	
-	oSelect.innerHTML = "";
-	for (var i=0, c=nodes.length; i<c; i++) {
-		oOption = document.createElement("option");
-		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
-		oOption.value = nodes[i].getAttribute("id");
-		
-		oOption.appendChild(oInner);
-		oSelect.appendChild(oOption);
-	}
+	xhr.onreadystatechange = function() {
+            console.log(xhr.responseType);
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
+			readDataPersonnel(xhr.responseXML, 1);
+			//document.getElementById("loader").style.display = "none";
+		} else if (xhr.readyState < 4) {
+			//document.getElementById("loader").style.display = "inline";
+		}
+	};
+	console.log(value);
+	xhr.open("POST", "AJAAX.php", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("jeu="+value);
 }
 
-
-function changeAgar(){
-    hideAccueil();
-    setTab();
-    var jeu = document.getElementById("choixJeu");
-    var image = document.getElementById("scores");
-    var head = document.getElementById("head");
-    jeu.innerHTML="Jouer à Agar.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agarTete.jpg')";
-    $("#choixJeu").attr("name", "agar");
+function readDataPersonnel(oData, page) {
+        console.log(oData);
+	var nodes   = oData.getElementsByTagName("item");
+	var tableau = document.getElementById("TabGeneral");
+	var lignes,cases;
+	tableau.innerHTML = "";
+	for (var i=(page-1)*10 ; i<page*10;i++) {
+            
+                lignes = document.createElement("tr");
+                id = document.createElement("th");
+                place = document.createElement("th");
+                score = document.createElement("th");
+                console.log("Longueur "+nodes.length)
+                if(i<nodes.length){
+                    id.innerHTML = nodes[i].getAttribute("id");
+                    place.innerHTML = i+1;
+                    score.innerHTML = nodes[i].getAttribute("score");
+                }
+                else{
+                    id.innerHTML = "-";
+                    place.innerHTML = i+1;
+                    score.innerHTML = "-";
+                }
+                tableau.appendChild(lignes);
+                lignes.appendChild(place);
+                lignes.appendChild(id);
+                lignes.appendChild(score);
+            
+            
+	}
 }
 function changePaper(){
     hideAccueil();
