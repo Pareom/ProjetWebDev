@@ -1,11 +1,33 @@
-function requestGeneral(oSelect) {
-	var value = document.getElementByID("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
-        console.log(name);
+function getXMLHttpRequest() {
+	var xhr = null;
+	
+	if (window.XMLHttpRequest || window.ActiveXObject) {
+		if (window.ActiveXObject) {
+			try {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch(e) {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		} else {
+			xhr = new XMLHttpRequest(); 
+		}
+	} else {
+		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+		return null;
+	}
+	
+	return xhr;
+}
+
+function requestGeneral() {
+	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
+        console.log(value);
 	var xhr   = getXMLHttpRequest();
 	
 	xhr.onreadystatechange = function() {
+            console.log(xhr.readyState);
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readData(xhr.responseXML, 1);
+			readDataGeneral(xhr.responseXML, 1);
 			//document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
 			//document.getElementById("loader").style.display = "inline";
@@ -14,10 +36,12 @@ function requestGeneral(oSelect) {
 	
 	xhr.open("POST", "compte.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("jeu=" + value);
+        console.log(value);
+	xhr.send("jeu=" + "Agar.io");
 }
 
 function readDataGeneral(oData, page) {
+        console.log(oData);
 	var nodes   = oData.getElementsByTagName("item");
 	var tableau = document.getElementById("TabGeneral");
 	var lignes,cases;

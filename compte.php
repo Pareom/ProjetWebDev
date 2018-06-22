@@ -15,19 +15,20 @@
     <body>
         <div class="container-fluid">
         <?php
-            header("Content-Type: text/xml");
+        
+            //header("Content-Type: text/xml");
+            
             echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
             echo "<list>";
 
-            $jeu = (isset($_POST["Jeu"])) ? htmlentities($_POST["Jeu"]) : NULL;
 
-            if ($idEditor) {
-                    recupTableauScoreGeneral($jeu);
+            if (isset($_POST["Jeu"])) {?> <script>console.log("test")</script><?php
+                $jeu = htmlentities($_POST["Jeu"]);
+                recupTableauScoreGeneral($jeu);
             }
 
             echo "</list>";
-        ?>
-        <?php
+            
             function recupTableauScoreGeneral($jeu){
                 mysql_connect("localhost", "root", "");
                 mysql_select_db("porjetwebdev");
@@ -39,6 +40,8 @@
                 }
                 return $list;
             }
+         
+         
         ?>
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="navbar-nav">
@@ -61,16 +64,16 @@
         <div id="head" class="jumbotron">
             
             <div class="btn-group" id="jeux">
-                <button id="choixJeu" type="button" class="btn btn-primary">Choisissez votre jeu !</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <button id="choixJeu" type="button" class="btn btn-primary" >Choisissez votre jeu !</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" id="Agar" onclick="changeAgar()">Agar.io</a>
-                  <a class="dropdown-item" id="Paper" onclick="changePaper()">Paper.io</a>
-                  <a class="dropdown-item" id="Slither" onclick="changeSlither()">Slither.io</a>
-                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex()">Superhex.io</a>
-                  <a class="dropdown-item" id="Splix" onclick="changeSplix()">Splix.io</a>
-                  <a class="dropdown-item" id="Overwatch" onclick="changeOver()">Overwatch.io</a>
+                <div class="dropdown-menu" >
+                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();">Agar.io</a>
+                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();">Paper.io</a>
+                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();">Slither.io</a>
+                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();">Superhex.io</a>
+                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();">Splix.io</a>
+                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();">Overwatch.io</a>
                 </div>
             </div>
         </div>
