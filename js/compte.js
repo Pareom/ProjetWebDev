@@ -1,34 +1,38 @@
-function request(oSelect) {
+function requestGeneral(oSelect, page) {
 	var value = oSelect.options[oSelect.selectedIndex].value;
 	var xhr   = getXMLHttpRequest();
 	
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readData(xhr.responseXML);
+			readData(xhr.responseXML, page);
 			document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
 			document.getElementById("loader").style.display = "inline";
 		}
 	};
 	
-	xhr.open("POST", "XMLHttpRequest_getListData.php", true);
+	xhr.open("POST", "compte.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("IdEditor=" + value);
+	xhr.send("jeu=" + value);
 }
 
-function readData(oData) {
+function readDataGeneral(oData, page) {
 	var nodes   = oData.getElementsByTagName("item");
-	var oSelect = document.getElementById("softwaresSelect");
-	var oOption, oInner;
-	
-	oSelect.innerHTML = "";
-	for (var i=0, c=nodes.length; i<c; i++) {
-		oOption = document.createElement("option");
-		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
-		oOption.value = nodes[i].getAttribute("id");
-		
-		oOption.appendChild(oInner);
-		oSelect.appendChild(oOption);
+	var tableau = document.getElementById("TabGeneral");
+	var lignes,cases;
+	tableau.innerHTML = "";
+	for (var i=page ; i<page+10;i++) {
+            
+                lignes = document.createElement("tr");
+                cases = document.createElement("th");
+                if(i<nodes.length)
+                    cases.innerHTML = nodes[i].getAttribute("id");
+                else
+                    cases.innerHTML = "-";
+                tableau.appendChild(lignes);
+                tableau.appendChild(cases);
+            
+            
 	}
 }
 

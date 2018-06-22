@@ -15,7 +15,30 @@
     <body id="body_compte">
         <div class="container-fluid">
         <?php
-            // put your code here
+            header("Content-Type: text/xml");
+            echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+            echo "<list>";
+
+            $jeu = (isset($_POST["Jeu"])) ? htmlentities($_POST["Jeu"]) : NULL;
+
+            if ($idEditor) {
+                    recupTableauScoreGeneral($jeu);
+            }
+
+            echo "</list>";
+        ?>
+        <?php
+            function recupTableauScoreGeneral($jeu){
+                mysql_connect("localhost", "root", "");
+                mysql_select_db("porjetwebdev");
+                $list ="";
+                $query = mysql_query("SELECT identifiant,score FROM (SELECT * FROM score WHERE jeu=" . mysql_real_escape_string($jeu) . " ORDER BY score DESC) GROUP BY identifiant");
+                
+                while ($back = mysql_fetch_assoc($query)) {
+                    $list+= "<item id=\"" . $back["id"] . "\" score=\"" . $back["name"] . "\" />";
+                }
+                return $list;
+            }
         ?>
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="navbar-nav">
@@ -82,7 +105,7 @@
                                 <th>Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="TabGeneral">
                         <tr>
                             <th>1</th>
                             <th>-</th>
