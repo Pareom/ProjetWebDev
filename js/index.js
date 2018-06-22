@@ -24,3 +24,8 @@ function ProblemeInscription(){
     Switch_Inscription();
     $(".alert").attr("style", "display:block;");
 }
+function typeFormMail(mail)
+{
+    var reg = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
+    return(reg.test(mail));
+}
