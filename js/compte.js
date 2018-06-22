@@ -167,3 +167,8 @@ function launchGame()
         alert("Veuillez choisir un jeu");
     }
 }
+function deconnexion()
+{
+    $_SESSION['id']=""; 
+    setcookie('id', '', time() + 1, null, null, false, true);
+}

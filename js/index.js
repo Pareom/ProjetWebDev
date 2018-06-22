@@ -32,7 +32,6 @@ function typeFormMail(mail)
 
 function verifChamps()
 {
-    alert("fct");
     var id = document.forms["form"]["inputIdentifiant"];
     var mail = document.forms["form"]["inputEmail"];
     var mdp = document.forms["form"]["inputPassword"];
