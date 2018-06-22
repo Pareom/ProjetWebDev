@@ -33,6 +33,23 @@ function readData(oData) {
 }
 
 
+function readData(oData) {
+	var nodes   = oData.getElementsByTagName("item");
+	var oSelect = document.getElementById("softwaresSelect");
+	var oOption, oInner;
+	
+	oSelect.innerHTML = "";
+	for (var i=0, c=nodes.length; i<c; i++) {
+		oOption = document.createElement("option");
+		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
+		oOption.value = nodes[i].getAttribute("id");
+		
+		oOption.appendChild(oInner);
+		oSelect.appendChild(oOption);
+	}
+}
+
+
 function changeAgar(){
     var jeu = document.getElementById("choixJeu");
     var image = document.getElementById("scores");
