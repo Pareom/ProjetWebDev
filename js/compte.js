@@ -1,13 +1,14 @@
-function requestGeneral(oSelect, page) {
-	var value = oSelect.options[oSelect.selectedIndex].value;
+function requestGeneral(oSelect) {
+	var value = document.getElementByID("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
+        console.log(name);
 	var xhr   = getXMLHttpRequest();
 	
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readData(xhr.responseXML, page);
-			document.getElementById("loader").style.display = "none";
+			readData(xhr.responseXML, 1);
+			//document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
-			document.getElementById("loader").style.display = "inline";
+			//document.getElementById("loader").style.display = "inline";
 		}
 	};
 	
@@ -21,7 +22,7 @@ function readDataGeneral(oData, page) {
 	var tableau = document.getElementById("TabGeneral");
 	var lignes,cases;
 	tableau.innerHTML = "";
-	for (var i=page ; i<page+10;i++) {
+	for (var i=page-1 ; i<page+10;i++) {
             
                 lignes = document.createElement("tr");
                 cases = document.createElement("th");
