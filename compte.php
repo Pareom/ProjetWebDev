@@ -64,8 +64,8 @@
         <div id="head" class="jumbotron">
             
             <div class="btn-group" id="jeux">
-                <button id="choixJeu" type="button" class="btn btn-primary" >Choisissez votre jeu !</button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" >
+                <button name="choix" id="choixJeu" type="button" class="btn btn-primary" onclick="launchGame()">Choisissez votre jeu !</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu" >
                   <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();">Agar.io</a>
@@ -77,20 +77,7 @@
                 </div>
             </div>
         </div>
-            
-        <!---Modal jeu--->    
-        <div class="modal fade" id="modalJeu">
-            <div class="modal-header">
-                <h4 class="modal-title">Choisissez votre jeu !</h4>
-                <button type="button" class="close" data-dismiss="modal">×</button>
-            </div>
-            <div class="modal-body">
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" href="game.php">Jouer !</button>
-            </div>
-            </div>
-        </div>
-        
+                    
         <!---Scores--->
         <div id="scores" class="row">
             <div class="col">
