@@ -8,9 +8,11 @@
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=''){
             $identifiant=$_COOKIE['id'];
-        }
+        }else{
+            header('Location: http://localhost/ProjetWebDev/index.php');
+            exit();
     }
-    else{
+    }else{
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
     }
