@@ -1,65 +1,124 @@
-function request(oSelect) {
-	var value = oSelect.options[oSelect.selectedIndex].value;
+function getXMLHttpRequest() {
+	var xhr = null;
+	
+	if (window.XMLHttpRequest || window.ActiveXObject) {
+		if (window.ActiveXObject) {
+			try {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch(e) {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		} else {
+			xhr = new XMLHttpRequest(); 
+		}
+	} else {
+		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+		return null;
+	}
+	
+	return xhr;
+}
+
+function requestGeneral() {
+	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
 	var xhr   = getXMLHttpRequest();
 	
 	xhr.onreadystatechange = function() {
+            console.log(xhr.responseType);
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readData(xhr.responseXML);
-			document.getElementById("loader").style.display = "none";
+			readDataGeneral(xhr.responseXML, 1);
+			//document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
-			document.getElementById("loader").style.display = "inline";
+			//document.getElementById("loader").style.display = "inline";
 		}
 	};
-	
-	xhr.open("POST", "XMLHttpRequest_getListData.php", true);
+	console.log(value);
+	xhr.open("POST", "AJAAX.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("IdEditor=" + value);
+	xhr.send("jeu="+value);
 }
 
-function readData(oData) {
+function readDataGeneral(oData, page) {
+        console.log(oData);
 	var nodes   = oData.getElementsByTagName("item");
-	var oSelect = document.getElementById("softwaresSelect");
-	var oOption, oInner;
-	
-	oSelect.innerHTML = "";
-	for (var i=0, c=nodes.length; i<c; i++) {
-		oOption = document.createElement("option");
-		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
-		oOption.value = nodes[i].getAttribute("id");
-		
-		oOption.appendChild(oInner);
-		oSelect.appendChild(oOption);
+	var tableau = document.getElementById("TabGeneral");
+	var lignes,cases;
+	tableau.innerHTML = "";
+	for (var i=(page-1)*10 ; i<page*10;i++) {
+            
+                lignes = document.createElement("tr");
+                id = document.createElement("th");
+                place = document.createElement("th");
+                score = document.createElement("th");
+                console.log("Longueur "+nodes.length)
+                if(i<nodes.length){
+                    id.innerHTML = nodes[i].getAttribute("id");
+                    place.innerHTML = i+1;
+                    score.innerHTML = nodes[i].getAttribute("score");
+                }
+                else{
+                    id.innerHTML = "-";
+                    place.innerHTML = i+1;
+                    score.innerHTML = "-";
+                }
+                tableau.appendChild(lignes);
+                lignes.appendChild(place);
+                lignes.appendChild(id);
+                lignes.appendChild(score);
+            
+            
 	}
 }
 
-
-function readData(oData) {
-	var nodes   = oData.getElementsByTagName("item");
-	var oSelect = document.getElementById("softwaresSelect");
-	var oOption, oInner;
+function requestPersonnel() {
+	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
+	var xhr   = getXMLHttpRequest();
 	
-	oSelect.innerHTML = "";
-	for (var i=0, c=nodes.length; i<c; i++) {
-		oOption = document.createElement("option");
-		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
-		oOption.value = nodes[i].getAttribute("id");
-		
-		oOption.appendChild(oInner);
-		oSelect.appendChild(oOption);
-	}
+	xhr.onreadystatechange = function() {
+            console.log(xhr.responseType);
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
+			readDataPersonnel(xhr.responseXML, 1);
+			//document.getElementById("loader").style.display = "none";
+		} else if (xhr.readyState < 4) {
+			//document.getElementById("loader").style.display = "inline";
+		}
+	};
+	console.log(value);
+	xhr.open("POST", "AJAAX.php", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("jeu="+value);
 }
 
-
-function changeAgar(){
-    hideAccueil();
-    setTab();
-    var jeu = document.getElementById("choixJeu");
-    var image = document.getElementById("scores");
-    var head = document.getElementById("head");
-    jeu.innerHTML="Jouer à Agar.io";
-    image.style.backgroundImage = "url('img/agar.png')";
-    head.style.backgroundImage = "url('img/agarTete.jpg')";
-    $("#choixJeu").attr("name", "agar");
+function readDataPersonnel(oData, page) {
+        console.log(oData);
+	var nodes   = oData.getElementsByTagName("item");
+	var tableau = document.getElementById("TabGeneral");
+	var lignes,cases;
+	tableau.innerHTML = "";
+	for (var i=(page-1)*10 ; i<page*10;i++) {
+            
+                lignes = document.createElement("tr");
+                id = document.createElement("th");
+                place = document.createElement("th");
+                score = document.createElement("th");
+                console.log("Longueur "+nodes.length)
+                if(i<nodes.length){
+                    id.innerHTML = nodes[i].getAttribute("id");
+                    place.innerHTML = i+1;
+                    score.innerHTML = nodes[i].getAttribute("score");
+                }
+                else{
+                    id.innerHTML = "-";
+                    place.innerHTML = i+1;
+                    score.innerHTML = "-";
+                }
+                tableau.appendChild(lignes);
+                lignes.appendChild(place);
+                lignes.appendChild(id);
+                lignes.appendChild(score);
+            
+            
+	}
 }
 function changePaper(){
     hideAccueil();

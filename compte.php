@@ -14,9 +14,7 @@
     </head>
     <body>
         <div class="container-fluid">
-        <?php
-            // put your code here
-        ?>
+        
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="navbar-nav">
                     <img src="img/avatar_test.png" alt="Logo" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
@@ -41,13 +39,13 @@
                 <button name="choix" id="choixJeu" type="button" class="btn btn-primary" onclick="launchGame()">Choisissez votre jeu !</button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" id="Agar" onclick="changeAgar()">Agar.io</a>
-                  <a class="dropdown-item" id="Paper" onclick="changePaper()">Paper.io</a>
-                  <a class="dropdown-item" id="Slither" onclick="changeSlither()">Slither.io</a>
-                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex()">Superhex.io</a>
-                  <a class="dropdown-item" id="Splix" onclick="changeSplix()">Splix.io</a>
-                  <a class="dropdown-item" id="Overwatch" onclick="changeOver()">Overwatch.io</a>
+                <div class="dropdown-menu" >
+                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();">Agar.io</a>
+                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();">Paper.io</a>
+                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();">Slither.io</a>
+                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();">Superhex.io</a>
+                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();">Splix.io</a>
+                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();">Overwatch.io</a>
                 </div>
             </div>
         </div>
@@ -69,7 +67,7 @@
                                 <th>Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="TabGeneral">
                         <tr>
                             <th>1</th>
                             <th>-</th>
