@@ -42,12 +42,12 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" onclick="changeAgar()">Agar.io</a>
-                  <a class="dropdown-item" onclick="changePaper()">Paper.io</a>
-                  <a class="dropdown-item" onclick="changeSlither()">Slither.io</a>
-                  <a class="dropdown-item" onclick="changeSuperhex()">Superhex.io</a>
-                  <a class="dropdown-item" onclick="changeSplix()">Splix.io</a>
-                  <a class="dropdown-item" onclick="changeOver()">Overwatch.io</a>
+                  <a class="dropdown-item" id="Agar" onclick="changeAgar()">Agar.io</a>
+                  <a class="dropdown-item" id="Paper" onclick="changePaper()">Paper.io</a>
+                  <a class="dropdown-item" id="Slither" onclick="changeSlither()">Slither.io</a>
+                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex()">Superhex.io</a>
+                  <a class="dropdown-item" id="Splix" onclick="changeSplix()">Splix.io</a>
+                  <a class="dropdown-item" id="Overwatch" onclick="changeOver()">Overwatch.io</a>
                 </div>
             </div>
         </div>
