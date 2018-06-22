@@ -7,17 +7,29 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=''){
-            $identifiant=$_COOKIE['id'];
+            $identifiant=$_SESSION['id'];
         }else{
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
     }
-    }
-    else{
+    }else{
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
     }
+    $img="";
     $logo = $email = $logo = "";
+    $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
+    
+    //Reccupere image
+    
+    $req = $DB->prepare("SELECT logo FROM compte WHERE id='$identifiant'");
+    $req->execute(array($_SESSION["id"]));
+    $img = $req->fetch();
+    if($img=="")
+    {
+        $img="img/avatar_test.png";
+    }
+    
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $logo = test_input($_POST["newAvatar"]);
@@ -28,12 +40,12 @@
     if(!$email="")
     {
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-        $DB->exec("UPDATE compte SET mail=$email WHERE id=$identifiant");
+        $DB->exec("UPDATE compte SET mail='$email' WHERE id='$identifiant'");
     }
     if(!$motdepasse="")
     {
         $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-        $DB->exec("UPDATE compte SET mdp=$motdepasse WHERE id=$identifiant");
+        $DB->exec("UPDATE compte SET mdp='$motdepasse' WHERE id='$identifiant'");
     }
 ?>
     
@@ -48,8 +60,8 @@
     <body class="bg-img text-center">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="navbar-nav">
-                <img src="img/avatar_test.png" alt="Logo" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
-                <a class="navbar-brand" href="#" id="pseudo">Pseudo</a>
+                <img src="<?php echo $identifiant; ?>" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                <a class="navbar-brand" href="#" id="pseudo"><?php echo $identifiant; ?></a>
                 <a class="navbar-brand" href="compte.php" id='retour'>Retour</a>
                 
                 
@@ -61,10 +73,14 @@
             <label for="newAvatar" class="sr-only">Changer d'avatar :</label>
             <input name="newAvatar" type="file" class="form-control-file border">
             <button class="btn btn-lg btn-primary btn-block" type="submit" id='changeAvatar'>Valider</button>
+        </form>
+           <form>
             <h4>Changer d'email</h4>
             <label for="newMail" class="sr-only">Changer d'addresse mail :</label>
             <input name="newMail" type="email" class="form-control border">
             <button class="btn btn-lg btn-primary btn-block" type="submit" id='changeMail'>Valider</button>
+            </form>
+           <form>
             <h4>Changer de mot de passe</h4>   
             <label for="newPassword" class="sr-only">Changer de mot de passe :</label>
             <input name="newPassword" type="password" class="form-control border">

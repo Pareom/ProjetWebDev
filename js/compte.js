@@ -22,11 +22,11 @@ function getXMLHttpRequest() {
 function requestGeneral() {
 	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
 	var xhr   = getXMLHttpRequest();
-	
+	var page = document.getElementById("Page_general").innerHTML;
 	xhr.onreadystatechange = function() {
             console.log(xhr.responseType);
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readDataGeneral(xhr.responseXML, 1);
+			readDataGeneral(xhr.responseXML, page);
 			//document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
 			//document.getElementById("loader").style.display = "inline";
@@ -39,35 +39,34 @@ function requestGeneral() {
 }
 
 function readDataGeneral(oData, page) {
-        console.log(oData);
-	var nodes   = oData.getElementsByTagName("item");
-	var tableau = document.getElementById("TabGeneral");
-	var lignes,cases;
-	tableau.innerHTML = "";
-	for (var i=(page-1)*10 ; i<page*10;i++) {
-            
-                lignes = document.createElement("tr");
-                id = document.createElement("th");
-                place = document.createElement("th");
-                score = document.createElement("th");
-                console.log("Longueur "+nodes.length)
-                if(i<nodes.length){
-                    id.innerHTML = nodes[i].getAttribute("id");
-                    place.innerHTML = i+1;
-                    score.innerHTML = nodes[i].getAttribute("score");
-                }
-                else{
-                    id.innerHTML = "-";
-                    place.innerHTML = i+1;
-                    score.innerHTML = "-";
-                }
-                tableau.appendChild(lignes);
-                lignes.appendChild(place);
-                lignes.appendChild(id);
-                lignes.appendChild(score);
-            
-            
-	}
+    console.log(oData);
+    if(oData!=null){
+        var nodes   = oData.getElementsByTagName("item");
+        var tableau = document.getElementById("TabGeneral");
+        var lignes,cases;
+        tableau.innerHTML = "";
+        for (var i=(page-1)*10 ; i<page*10;i++) {
+            lignes = document.createElement("tr");
+            id = document.createElement("th");
+            place = document.createElement("th");
+            score = document.createElement("th");
+            console.log("Longueur "+nodes.length)
+            if(i<nodes.length){
+                id.innerHTML = nodes[i].getAttribute("id");
+                place.innerHTML = i+1;
+                score.innerHTML = nodes[i].getAttribute("score");
+            }
+            else{
+                id.innerHTML = "-";
+                place.innerHTML = i+1;
+                score.innerHTML = "-";
+            }
+            tableau.appendChild(lignes);
+            lignes.appendChild(place);
+            lignes.appendChild(id);
+            lignes.appendChild(score);
+        }
+    }
 }
 
 
@@ -75,11 +74,12 @@ function requestPersonnel(id) {
     if(id!=null){
 	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
 	var xhr   = getXMLHttpRequest();
-	
+	var page = document.getElementById("Page_perso").innerHTML;
+        console.log(value+"->"+page);
 	xhr.onreadystatechange = function() {
             console.log(xhr.responseType);
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) { //Verifier que le serveur a bien effectué l'action
-			readDataPersonnel(xhr.responseXML, 1);
+			readDataPersonnel(xhr.responseXML, page);
 			//document.getElementById("loader").style.display = "none";
 		} else if (xhr.readyState < 4) {
 			//document.getElementById("loader").style.display = "inline";
@@ -93,35 +93,30 @@ function requestPersonnel(id) {
 }
 
 function readDataPersonnel(oData, page) {
-        console.log(oData);
-	var nodes   = oData.getElementsByTagName("item");
-	var tableau = document.getElementById("TabGeneral");
-	var lignes,cases;
-	tableau.innerHTML = "";
-	for (var i=(page-1)*10 ; i<page*10;i++) {
-            
-                lignes = document.createElement("tr");
-                id = document.createElement("th");
-                place = document.createElement("th");
-                score = document.createElement("th");
-                console.log("Longueur "+nodes.length)
-                if(i<nodes.length){
-                    id.innerHTML = nodes[i].getAttribute("id");
-                    place.innerHTML = i+1;
-                    score.innerHTML = nodes[i].getAttribute("score");
-                }
-                else{
-                    id.innerHTML = "-";
-                    place.innerHTML = i+1;
-                    score.innerHTML = "-";
-                }
-                tableau.appendChild(lignes);
-                lignes.appendChild(place);
-                lignes.appendChild(id);
-                lignes.appendChild(score);
-            
-            
-	}
+    console.log(oData);
+    if(oData!=null){
+        var nodes   = oData.getElementsByTagName("item");
+        var tableau = document.getElementById("TabPersonnel");
+        var lignes,cases;
+        tableau.innerHTML = "";
+        for (var i=(page-1)*10 ; i<page*10;i++) {
+            lignes = document.createElement("tr");
+            date = document.createElement("th");
+            score = document.createElement("th");
+            console.log("Longueur "+nodes.length)
+            if(i<nodes.length){
+                date.innerHTML = nodes[i].getAttribute("date");
+                score.innerHTML = nodes[i].getAttribute("score");
+            }
+            else{
+                date.innerHTML = "-";
+                score.innerHTML = "-";
+            }
+            tableau.appendChild(lignes);
+            lignes.appendChild(score);
+            lignes.appendChild(date);
+        }
+    }
 }
 
 
@@ -242,7 +237,28 @@ function launchGame()
         alert("Veuillez choisir un jeu");
     }
 }
-function setAvatar()
-{
+
+function moinsPageGeneral(id){
+    var page = document.getElementById("Page_general").innerHTML;
+    document.getElementById("Page_general").innerHTML = page>1?page-1:page;
+    requestPersonnel(id);
+    
+}
+
+function plusPageGeneral(id){
+    document.getElementById("Page_general").innerHTML ++;
+    requestPersonnel(id);
+    
+}
+function moinsPagePerso(id){
+    var page = document.getElementById("Page_perso").innerHTML;
+    document.getElementById("Page_perso").innerHTML = page>1?page-1:page;
+    requestPersonnel(id);
+    
+}
+
+function plusPagePerso(id){
+    document.getElementById("Page_perso").innerHTML ++;
+    requestPersonnel(id);
     
 }
