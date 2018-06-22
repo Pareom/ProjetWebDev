@@ -86,9 +86,11 @@ Pour changer les petites spécificiés
     position: relative;
     left:45%;
 }
-#scores{
-    background-image: url("img/pois.jpg");
+#body_compte{
+    background: url("img/pois.jpg") no-repeat center;
     padding-top: 3%;
+  -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+  background-size: cover; /* version standardisée */
 }
 #classement_joueur{
     margin-right: 5%;
