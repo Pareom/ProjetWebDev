@@ -4,7 +4,8 @@
     
     if(isset($_COOKIE['id'])){
         if($_COOKIE['id']!=''){
-            $_SESSION['id']=$_COOKIE['id'];
+            //$_SESSION['id']=$_COOKIE['id'];
+            setcookie('id', '', time() + 1, null, null, false, true);
         }
     }else{
         setcookie('id', '', time() + 1, null, null, false, true);
