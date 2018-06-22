@@ -7,7 +7,7 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=''){
-            $identifiant=$_COOKIE['id'];
+            $identifiant=$_SESSION['id'];
         }else{
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
@@ -17,6 +17,7 @@
             exit();
     }
 ?>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -52,12 +53,12 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu" >
-                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();requestPersonnel(identifiant);">Agar.io</a>
-                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();requestPersonnel(identifiant);">Paper.io</a>
-                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();requestPersonnel(identifiant);">Slither.io</a>
-                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();requestPersonnel(identifiant);">Superhex.io</a>
-                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();requestPersonnel(identifiant);">Splix.io</a>
-                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();requestPersonnel(identifiant);">Overwatch.io</a>
+                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Agar.io</a>
+                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Paper.io</a>
+                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Slither.io</a>
+                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Superhex.io</a>
+                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Splix.io</a>
+                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();requestPersonnel('<?php echo $identifiant ?>');">Overwatch.io</a>
                 </div>
             </div>
         </div>
@@ -69,8 +70,8 @@
                     <thead>
                         <tr>    
                             <th colspan="3">
-                                Classement général
-                                <button type="button" id="mon_classement" class="btn btn-secondary btn-sm">Mon classement</button>
+                                Leader Bord
+                                
                             </th>
                         </tr>
                         <tr>
@@ -133,9 +134,9 @@
                     </tbody>
                     <tfoot>
                         <th colspan="3">
-                            <ul class="pagination" id="paginaton_general">
+                            <ul class="pagination" id="pagination_general">
                                 <li class="page-item"><a class="page-link" href="#"><</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active"><a id="Page_general" class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">></a></li>
                             </ul>
                         </th>
@@ -147,17 +148,13 @@
                     <thead>
                     <th colspan="2">
                         Scores personnels
-                        <select id="trier" class="btn btn-secondary btn-sm">
-                            <option>trier par scores</option>
-                            <option>trier par dates</option>
-                        </select>
                     </th>
                         <tr>
                             <th>Scores</th>
                             <th>Dates</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="TabPersonnel">
                         <tr>
                             <th>-</th>
                             <th>-</th>
@@ -201,10 +198,10 @@
                     </tbody>
                     <tfoot>
                     <th colspan="2">
-                        <ul class="pagination" id="pagination_perso">
-                            <li class="page-item"><a class="page-link" href="#"><</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">></a></li>
+                        <ul class="pagination" id="pagination_perso" name="1">
+                            <li class="page-item"><a class="page-link" onclick="moinsPagePerso('<?php echo $identifiant ?>')"><</a></li>
+                            <li class="page-item active"><a id="Page_perso" class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" onclick="plusPagePerso('<?php echo $identifiant ?>')">></a></li>
                         </ul>
                     </th>
                     </tfoot>

@@ -11,7 +11,7 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=""){
-            header('Location: http://localhost/ProjetWebDev/index.php');
+            header('Location: http://localhost/ProjetWebDev/compte.php');
             exit();
         }
     }
@@ -32,7 +32,7 @@ and open the template in the editor.
     </head>
     <body class="bg-img text-center">
         <div class="zone_co">
-            <form class="form-signin" onsubmit="verifChamps()" method="post" name="form" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <form class="form-signin" onsubmit="return verifChamps()" method="post" name="form" action=" <?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <h1 class="h3 mb-3 font-weight-normal" id="titre">Connection</h1>
                 
                 <label for="inputIdentifiant" class="sr-only">Identifiant</label>
@@ -92,9 +92,8 @@ and open the template in the editor.
                     if($donnees['count(*)']!=0){
                         $_SESSION['id']=$donnees['id'];//On s'est bien co
                         if (isset($_POST["remember_me"])){
-                            setcookie('id', $donnees['id'], time() + 1*60*60, null, null, false, true);
+                            setcookie('id', $donnees['id'], time() + 24*60*60, null, null, false, true);
                         }
-                        $_SESSION['id']="";
                         header('Location: http://localhost/ProjetWebDev/compte.php');
                     }else{
                         echo "Ah, ca n'a pas marché";
