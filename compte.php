@@ -42,7 +42,7 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" onclick="changeAgar()">Agar.io</a>
+                  <a class="dropdown-item" onclick="changeAgar()">Braaaa.io</a>
                   <a class="dropdown-item" onclick="changePaper()">Paper.io</a>
                   <a class="dropdown-item" onclick="changeSlither()">Slither.io</a>
                   <a class="dropdown-item" onclick="changeSuperhex()">Superhex.io</a>

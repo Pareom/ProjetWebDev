@@ -21,7 +21,8 @@ function getXMLHttpRequest() {
 
 function changeAgar(){
     var jeu = document.getElementById("choixJeu");
-    var image = document.getElementById("body_compte");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Agar.io";
     image.style.backgroundImage = "url('img/agar.png')";
 }
