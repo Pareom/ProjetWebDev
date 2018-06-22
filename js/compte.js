@@ -70,7 +70,9 @@ function readDataGeneral(oData, page) {
 	}
 }
 
-function requestPersonnel() {
+
+function requestPersonnel(id) {
+    if(id!=null){
 	var value = document.getElementById("choixJeu").name;//oSelect.options[oSelect.selectedIndex].value;
 	var xhr   = getXMLHttpRequest();
 	
@@ -86,7 +88,8 @@ function requestPersonnel() {
 	console.log(value);
 	xhr.open("POST", "AJAAX.php", true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("jeu="+value);
+	xhr.send("jeu="+value+"&id="+id);
+    }
 }
 
 function readDataPersonnel(oData, page) {
@@ -119,6 +122,19 @@ function readDataPersonnel(oData, page) {
             
             
 	}
+}
+
+
+function changeAgar(){
+    hideAccueil();
+    setTab();
+    var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
+    jeu.innerHTML="Jouer à Agar.io";
+    image.style.backgroundImage = "url('img/agar.png')";
+    head.style.backgroundImage = "url('img/agarTete.jpg')";
+    $("#choixJeu").attr("name", "agar");
 }
 function changePaper(){
     hideAccueil();

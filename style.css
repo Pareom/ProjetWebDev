@@ -73,6 +73,7 @@ Pour changer les petites spécificiés
 }
 #head{
     border-radius: 10px;
+    background: url(img/fond_temporaire.jpg) no-repeat center ;
     -webkit-background-size: cover; /* pour anciens Chrome et Safari */
   background-size: cover; /* version standardisée */
   height: 40%;

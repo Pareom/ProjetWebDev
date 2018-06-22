@@ -1,9 +1,21 @@
-<?php
-    session_start();        
-    /* ca sert à la deconnexion, il faut faire un bouton qui fasse ca 
-    $_SESSION['id']=""; 
-    setcookie('id', '', time() + 1, null, null, false, true);
-     */
+<?php        
+    session_start();
+    if(isset($_COOKIE['id'])){
+        if($_COOKIE['id']!=''){
+            $_SESSION['id']=$_COOKIE['id'];
+        }
+    }
+    if(isset($_SESSION['id'])){
+        if($_SESSION['id']!=''){
+            $identifiant=$_COOKIE['id'];
+        }else{
+            header('Location: http://localhost/ProjetWebDev/index.php');
+            exit();
+    }
+    }else{
+            header('Location: http://localhost/ProjetWebDev/index.php');
+            exit();
+    }
 ?>
 <html>
     <head>
@@ -39,12 +51,12 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu" >
-                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();">Agar.io</a>
-                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();">Paper.io</a>
-                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();">Slither.io</a>
-                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();">Superhex.io</a>
-                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();">Splix.io</a>
-                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();">Overwatch.io</a>
+                  <a class="dropdown-item" id="Agar" onclick="changeAgar();requestGeneral();requestPersonnel(identifiant);">Agar.io</a>
+                  <a class="dropdown-item" id="Paper" onclick="changePaper();requestGeneral();requestPersonnel(identifiant);">Paper.io</a>
+                  <a class="dropdown-item" id="Slither" onclick="changeSlither();requestGeneral();requestPersonnel(identifiant);">Slither.io</a>
+                  <a class="dropdown-item" id="Superhex" onclick="changeSuperhex();requestGeneral();requestPersonnel(identifiant);">Superhex.io</a>
+                  <a class="dropdown-item" id="Splix" onclick="changeSplix();requestGeneral();requestPersonnel(identifiant);">Splix.io</a>
+                  <a class="dropdown-item" id="Overwatch" onclick="changeOver();requestGeneral();requestPersonnel(identifiant);">Overwatch.io</a>
                 </div>
             </div>
         </div>

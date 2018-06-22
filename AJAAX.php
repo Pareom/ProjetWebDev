@@ -7,6 +7,8 @@
             
 
             if (isset($_POST["jeu"])) {
+                if(isset($_POST["id"])) {
+                }
                 $jeu = htmlentities($_POST["jeu"]);
                 recupTableauScoreGeneral($jeu);
             }

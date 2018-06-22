@@ -11,7 +11,7 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=""){
-            header('Location: http://localhost/ProjetWebDev/compte.php');
+            header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
         }
     }
