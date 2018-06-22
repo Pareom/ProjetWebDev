@@ -11,7 +11,7 @@
         }
     }
     else{
-            header('Location: http://localhost/ProjetWebDev/compte.php');
+            header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
     }
     $logo = $email = $logo = "";
