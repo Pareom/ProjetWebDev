@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="style.css" type="text/css" media="screen">
         <title>Page compte</title>
     </head>
-    <body id="body_compte">
+    <body>
         <div class="container-fluid">
         <?php
             header("Content-Type: text/xml");
@@ -238,6 +238,44 @@
             </div>
         </div>
         </div>
+        <div id="accueil" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#accueil" data-slide-to="0" class="active"></li>
+                <li data-target="#accueil" data-slide-to="1"></li>
+                <li data-target="#accueil" data-slide-to="2"></li>
+                <li data-target="#accueil" data-slide-to="3" class="active"></li>
+                <li data-target="#accueil" data-slide-to="4"></li>
+                <li data-target="#accueil" data-slide-to="5"></li>
+            </ul>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="img/agar.png" alt="Agar.io" width="500" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="img/paperVignette.jpg" alt="Paper.io" width="500" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="img/slither.jpg" alt="New York" width="500" height="500">
+            </div>
+             <div class="carousel-item">
+                 <img src="img/splix.jpg" alt="Splix.io" width="500" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="img/superVignette.png" alt="SuperhexVignette.io" width="500" height="500">
+            </div>
+            <div class="carousel-item">
+              <img src="img/over.jpeg" alt="Overwatch" width="500" height="500">
+            </div>   
+          </div>
+            <a class="carousel-control-prev" href="#accueil" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </a>
+          <a class="carousel-control-next" href="#accueil" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </a>
+        </div>
+        </div>
+            
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>

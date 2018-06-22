@@ -38,29 +38,102 @@ function readDataGeneral(oData, page) {
 }
 
 
+function readData(oData) {
+	var nodes   = oData.getElementsByTagName("item");
+	var oSelect = document.getElementById("softwaresSelect");
+	var oOption, oInner;
+	
+	oSelect.innerHTML = "";
+	for (var i=0, c=nodes.length; i<c; i++) {
+		oOption = document.createElement("option");
+		oInner  = document.createTextNode(nodes[i].getAttribute("name"));
+		oOption.value = nodes[i].getAttribute("id");
+		
+		oOption.appendChild(oInner);
+		oSelect.appendChild(oOption);
+	}
+}
+
+
 function changeAgar(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
-    var image = document.getElementById("body_compte");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Agar.io";
     image.style.backgroundImage = "url('img/agar.png')";
+    head.style.backgroundImage = "url('img/agarTete.jpg')";;
 }
 function changePaper(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Paper.io";
+    image.style.backgroundImage = "url('img/paperFond.png')";
+    head.style.backgroundImage = "url('img/paper.png')";;
 }
 function changeSlither(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Slither.io";
+    image.style.backgroundImage = "url('img/slitherFond.png')";
+    head.style.backgroundImage = "url('img/slither.jpg')";;
 }
 function changeSplix(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à Splix.io";
+    image.style.backgroundImage = "url('img/splixFond.jpg')";
+    head.style.backgroundImage = "url('img/splix.jpg')";;
 }
 function changeSuperhex(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à SuperHex.io";
+    image.style.backgroundImage = "url('img/superFond.png')";
+    head.style.backgroundImage = "url('img/superhex.jpg')";;
 }
 function changeOver(){
+    hideAccueil();
+    setTab();
     var jeu = document.getElementById("choixJeu");
+    var image = document.getElementById("scores");
+    var head = document.getElementById("head");
     jeu.innerHTML="Jouer à OverWatch.io";
+    image.style.backgroundImage = "url('img/overFond.jpg')";
+    head.style.backgroundImage = "url('img/over.jpeg')";;
+}
+function setTab()
+{
+    var scores = document.getElementById("scores");
+    $(function(){
+        $("#scores").show();
+    });
+}
+function hideTab()
+{
+    var scores = document.getElementById("scores");
+    $(function(){
+        $("#scores").hide();
+    });
+}
+hideTab();
+function hideAccueil()
+{
+    var accueil = document.getElementById("accueil");
+    $(function(){
+        $("#accueil").hide();
+    });
 }
