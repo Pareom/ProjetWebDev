@@ -17,20 +17,64 @@
         <?php
             // put your code here
         ?>
-        <div id="head" class="row">
-            <img src="img/avatar_test.png" class="rounded-circle col-sm-3 img-fluid" id="avatar" alt="Avatar">
-            <h1 class="col-sm-7 align-item-center" id="pseudo">Pseudo</h1>
-            <h3 class="col-sm-2" id="classement_joueur">Classement : </h3>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <div class="navbar-nav">
+                    <img src="img/avatar_test.png" alt="Logo" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                    <a class="navbar-brand" href="#" id="pseudo">Pseudo</a>
+                    
+                    <li class="nav-item dropdown" id="navButton">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Autres
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="index.php">Déconnexion</a>
+                      <a class="dropdown-item" href="gestion.php">Gestion du compte</a>
+                    </div>
+                    </li>
+                    <a class="navbar-brand" href="#" id="classement_joueur">Classement : </a>
+                </div>
+            </nav>
+        <!---En-tête--->
+        <div id="head" class="jumbotron">
+            
+            <div class="btn-group" id="jeux">
+                <button type="button" class="btn btn-primary">Jeu</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="game.php">Agar.io</a>
+                  <a class="dropdown-item" href="game.php">Paper.io</a>
+                  <a class="dropdown-item" href="game.php">Slither.io</a>
+                  <a class="dropdown-item" href="game.php">Superhex.io</a>
+                  <a class="dropdown-item" href="game.php">Splix.io</a>
+                  <a class="dropdown-item" href="game.php">Overwatch.io</a>
+                </div>
+            </div>
         </div>
-        <button type="button" id="jouer" class="btn btn-warning btn-primary btn-lg">Jouer</button>
+            
+        <!---Modal jeu--->    
+        <div class="modal fade" id="modalJeu">
+            <div class="modal-header">
+                <h4 class="modal-title">Choisissez votre jeu !</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" href="game.php">Jouer !</button>
+            </div>
+            </div>
+        </div>
+        
+        <!---Scores--->
         <div id="scores" class="row">
             <div class="col">
-                <table id="classement_general" class="table table-dark table-striped">
+                <table id="classement_general" class="table table-dark table-striped" data-toggle="modal" data-target="modalJeu">
                     <thead>
                         <tr>    
-                            <th>Classement général</th>
-                            <th></th>
-                            <th><button type="button" id="mon_classement" class="btn btn-secondary btn-sm">Mon classement</button></th>
+                            <th colspan="3">
+                                Classement général
+                                <button type="button" id="mon_classement" class="btn btn-secondary btn-sm">Mon classement</button>
+                            </th>
                         </tr>
                         <tr>
                                 <th>#</th>
@@ -91,23 +135,21 @@
                         </tr>
                     </tbody>
                     <tfoot>
-                        <th></th>
-                        <th class="col-md3">
-                            <ul class="pagination">
+                        <th colspan="3">
+                            <ul class="pagination" id="paginaton_general">
                                 <li class="page-item"><a class="page-link" href="#"><</a></li>
                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#">></a></li>
                             </ul>
                         </th>
-                        <th></th>
                     </tfoot>
                 </table>
             </div>
             <div class="col">
                 <table id="classement_perso" class="table table-dark table-striped">
                     <thead>
-                    <th>Scores personnels</th>
-                    <th>
+                    <th colspan="2">
+                        Scores personnels
                         <select id="trier" class="btn btn-secondary btn-sm">
                             <option>trier par scores</option>
                             <option>trier par dates</option>
@@ -161,15 +203,13 @@
                         </tr>  
                     </tbody>
                     <tfoot>
-                    <th></th>
-                    <th class="col-md3">
-                        <ul class="pagination">
+                    <th colspan="2">
+                        <ul class="pagination" id="pagination_perso">
                             <li class="page-item"><a class="page-link" href="#"><</a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">></a></li>
                         </ul>
                     </th>
-                    <th></th>
                     </tfoot>
                 </table>
             </div>
