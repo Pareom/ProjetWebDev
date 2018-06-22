@@ -38,16 +38,16 @@
         <div id="head" class="jumbotron">
             
             <div class="btn-group" id="jeux">
-                <button type="button" class="btn btn-primary">Jeu</button>
+                <button id="choixJeu" type="button" class="btn btn-primary">Choisissez votre jeu !</button>
                 <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="game.php">Agar.io</a>
-                  <a class="dropdown-item" href="game.php">Paper.io</a>
-                  <a class="dropdown-item" href="game.php">Slither.io</a>
-                  <a class="dropdown-item" href="game.php">Superhex.io</a>
-                  <a class="dropdown-item" href="game.php">Splix.io</a>
-                  <a class="dropdown-item" href="game.php">Overwatch.io</a>
+                  <a class="dropdown-item" onclick="changeAgar()">Agar.io</a>
+                  <a class="dropdown-item" onclick="changePaper()">Paper.io</a>
+                  <a class="dropdown-item" onclick="changeSlither()">Slither.io</a>
+                  <a class="dropdown-item" onclick="changeSuperhex()">Superhex.io</a>
+                  <a class="dropdown-item" onclick="changeSplix()">Splix.io</a>
+                  <a class="dropdown-item" onclick="changeOver()">Overwatch.io</a>
                 </div>
             </div>
         </div>
@@ -218,4 +218,5 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+        <script src="js/compte.js"></script>
     </body>
