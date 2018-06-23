@@ -80,7 +80,7 @@ and open the template in the editor.
                 if($email!=""){
                     $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant'");
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
-                    if($donnees['count(*)']!=0 || $identifiant == "generic" || verifTaille($identifiant)===0 || verifTaille($motdepasse) || verifTaille($email)){
+                    if($donnees['count(*)']!=0 || $identifiant == "generic" || verifTaille($identifiant) || verifTaille($motdepasse) || verifTaille($email)){
                         ?><script type="text/javascript">ProblemeInscription();</script><?php
                     }else{
                         $DB->exec("INSERT INTO compte(id, mdp, mail) VALUES('$identifiant','$motdepasse','$email')");
@@ -102,8 +102,8 @@ and open the template in the editor.
             }
             function verifTaille($id){
                 if(strlen($id)===0 || strlen($id)>254)
-                    return false;
-                return true;
+                    return true;
+                return false;
             }
             function test_input($data) {
               $data = trim($data);

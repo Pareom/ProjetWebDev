@@ -29,7 +29,7 @@
             function recupTableauScorePersonnel($jeu,$id){
                 
                 $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-                $request = $DB->query("SELECT score,date FROM  score WHERE jeu = '$jeu' AND identifiant = '$id' ORDER BY score DESC, identifiant ASC");
+                $request = $DB->query("SELECT score,date FROM  score WHERE jeu = '$jeu' AND identifiant = '$id' ORDER BY date DESC, score DESC");
                 while ($donnees = $request->fetch(PDO::FETCH_ASSOC)) { // Chaque entrée sera récupérée et placée dans un array.
                     echo "<item date=\"" . $donnees["date"] . "\" score=\"" . $donnees["score"] . "\" />";
                 }

@@ -87,7 +87,7 @@ Pour changer les petites spécificiés
 #trier, #mon_classement{
     float: right;
 }
-#pagination_perso, #paginaton_general{
+#pagination_perso, #pagination_general{
     position: relative;
     left:45%;
 }

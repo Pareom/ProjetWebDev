@@ -38,13 +38,11 @@ function verifChamps()
     if(!id.value)
     {
         id.style.border ="solid red";
-        alert("message");
         return false;
     } 
     if(!mdp.value)
     {
         mdp.style.border ="solid red";
-        alert("message");
         return false;
     } 
     if(mail.style.display==='block')
@@ -52,7 +50,6 @@ function verifChamps()
         if(!mail.value || typeFormMail(mail))
         {
             mail.style.border ="solid red";
-            alert("message");
             return false;
         }
     }
