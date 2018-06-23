@@ -16,19 +16,6 @@
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
     }
-    $img="";
-    $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-    
-    //Reccupere image
-    
-    $req = $DB->prepare("SELECT logo FROM compte WHERE id='$identifiant'");
-    $req->execute(array($_SESSION["id"]));
-    $img = $req->fetch();
-    if($img=="")
-    {
-        $img="img/avatar_test.png";
-    }
-   
 ?>
 
 <html>
@@ -43,7 +30,7 @@
         
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="navbar-nav">
-                    <img src="<?php echo $identifiant; ?>" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                    <img src="uploads/<?php echo $identifiant?>" onerror="this.src='uploads/generic';" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
                     <a class="navbar-brand" href="#" id="pseudo"><?php echo $identifiant; ?></a>
                     
                     <li class="nav-item dropdown" id="navButton">

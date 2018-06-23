@@ -7,7 +7,7 @@
     }
     if(isset($_SESSION['id'])){
         if($_SESSION['id']!=''){
-            $identifiant=$_COOKIE['id'];
+            $identifiant=$_SESSION['id'];
         }else{
             header('Location: http://localhost/ProjetWebDev/index.php');
             exit();
@@ -19,42 +19,24 @@
     }
     
     
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["newAvatar"]["name"]);
-
-$DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
-$DB->exec("INSERT INTO compte(logo) VALUES('$target_file')");
-
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["newAvatar"]["tmp_name"]);
-    if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
+function upload($index,$destination,$maxsize=FALSE,$extensions=FALSE)
+{
+   //Test1: fichier correctement uploadé
+     if (!isset($_FILES[$index]) OR $_FILES[$index]['error'] > 0) return FALSE;
+   //Test2: taille limite
+     if ($maxsize !== FALSE AND $_FILES[$index]['size'] > $maxsize) return FALSE;
+   //Test3: extension
+     $ext = substr(strrchr($_FILES[$index]['name'],'.'),1);
+     if ($extensions !== FALSE AND !in_array($ext,$extensions)) return FALSE;
+   //Déplacement
+     return move_uploaded_file($_FILES[$index]['tmp_name'],$destination);
 }
-
-// Check if file already exists
-if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["newAvatar"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-// Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    $uploadOk = 0;
-}
+ 
+//EXEMPLES
+  $upload1 = upload('newAvatar',"uploads/$identifiant" );
+ 
+  if ($upload1){ header('Location: http://localhost/ProjetWebDev/gestion.php');}
+  else {
+      echo "Un problème est survenu";}
 ?>
 

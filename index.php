@@ -81,10 +81,9 @@ and open the template in the editor.
                     $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant'");
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
                     if($donnees['count(*)']!=0){
-                        //echo "Probleme, il existe deja un compte comme ca ";
                         ?><script type="text/javascript">ProblemeInscription();</script><?php
                     }else{
-                        $DB->exec("INSERT INTO compte(id, mdp, mail, logo) VALUES('$identifiant','$motdepasse','$email','')");
+                        $DB->exec("INSERT INTO compte(id, mdp, mail) VALUES('$identifiant','$motdepasse','$email')");
                         ?><script type="text/javascript">Switch_Connection();</script><?php //On l'envoie se connecter
                     }
                 }else{
@@ -97,7 +96,6 @@ and open the template in the editor.
                         }
                         header('Location: http://localhost/ProjetWebDev/compte.php');
                     }else{
-                        echo "Ah, ca n'a pas marché";
                         ?><script type="text/javascript">ProblemeConnection();</script><?php
                     }
                 }

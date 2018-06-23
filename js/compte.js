@@ -241,13 +241,13 @@ function launchGame()
 function moinsPageGeneral(id){
     var page = document.getElementById("Page_general").innerHTML;
     document.getElementById("Page_general").innerHTML = page>1?page-1:page;
-    requestPersonnel(id);
+    requestGeneral(id);
     
 }
 
 function plusPageGeneral(id){
     document.getElementById("Page_general").innerHTML ++;
-    requestPersonnel(id);
+    requestGeneral(id);
     
 }
 function moinsPagePerso(id){

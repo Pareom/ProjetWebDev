@@ -17,22 +17,11 @@
             exit();
     }
     $img="";
-    $logo = $email = $logo = "";
-    $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
+    $email = $motdepasse = "";
     
-    //Reccupere image
-    
-    $req = $DB->prepare("SELECT logo FROM compte WHERE id='$identifiant'");
-    $req->execute(array($_SESSION["id"]));
-    $img = $req->fetch();
-    if($img=="")
-    {
-        $img="img/avatar_test.png";
-    }
     
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $logo = isset($_POST["newAvatar"])?test_input($_POST["newAvatar"]):"";
       $email = isset($_POST["newMail"])?test_input($_POST["newMail"]):"";
       $motdepasse = isset($_POST["newPassword"])?test_input($_POST["newPassword"]):"";
     }
@@ -66,7 +55,7 @@
     <body class="bg-img text-center">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <div class="navbar-nav">
-                <img src="<?php echo $img; ?>" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
+                <img src="uploads/<?php echo $identifiant?>" onerror="this.src='uploads/generic';" style="width:40px; height: 40px" class="rounded-circle" id="avatar">
                 <a class="navbar-brand" href="#" id="pseudo"><?php echo $identifiant; ?></a>
                 <a class="navbar-brand" href="compte.php" id='retour'>Retour</a>
             </div>
