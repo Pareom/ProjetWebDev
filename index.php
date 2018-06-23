@@ -78,7 +78,7 @@ and open the template in the editor.
             if($identifiant!="" and $motdepasse!=""){
                 $DB = new PDO("mysql:host=localhost; dbname=projetwebdev", "root","");
                 if($email!=""){
-                    $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant'");
+                    $request = $DB->query("SELECT id,count(*) FROM compte WHERE id='$identifiant' OR mail = '$email'");
                     $donnees = $request->fetch(PDO::FETCH_ASSOC);
                     if($donnees['count(*)']!=0 || $identifiant == "generic" || verifTaille($identifiant) || verifTaille($motdepasse) || verifTaille($email)){
                         ?><script type="text/javascript">ProblemeInscription();</script><?php
