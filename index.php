@@ -29,7 +29,7 @@ and open the template in the editor.
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css" type="text/css" >
-        <title>Acceuil</title>
+        <title>Accil</title>
     </head>
     <body class="bg-img text-center">
         <div class="zone_co">
